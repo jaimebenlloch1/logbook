@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Logbook</title>
+<meta name="description" content="Personal organizer — schedule, tasks, meals, health and finances.">
+<meta name="theme-color" content="#F7F3E8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#262117" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Logbook">
+<meta name="format-detection" content="telephone=no">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/mobile.css">
+</head>
+<body>
+<div id="app">
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">◆</span>
+      <span class="brand-name">Logbook</span>
+      <span class="version-badge" id="version-badge">v2.2</span>
+    </div>
+    <nav class="tabs" id="tabs">
+      <div class="tab-pill" id="tab-pill"></div>
+      <button class="tab-btn active" data-tab="today"><span class="tab-ico">◉</span><span class="tab-lbl">Today</span></button>
+      <button class="tab-btn" data-tab="calendar"><span class="tab-ico">▦</span><span class="tab-lbl">Calendar</span></button>
+      <button class="tab-btn" data-tab="schedule"><span class="tab-ico">◷</span><span class="tab-lbl">Schedule</span></button>
+      <button class="tab-btn" data-tab="tasks"><span class="tab-ico">✓</span><span class="tab-lbl">Tasks</span></button>
+      <button class="tab-btn tab-secondary" data-tab="masters"><span class="tab-ico">✎</span><span class="tab-lbl">Master's</span></button>
+      <button class="tab-btn tab-secondary" data-tab="settings"><span class="tab-ico">⚙</span><span class="tab-lbl">Settings</span></button>
+      <button class="tab-btn tab-more" data-tab="more"><span class="tab-ico">⋯</span><span class="tab-lbl">More</span></button>
+    </nav>
+    <div class="topbar-right">
+      <span id="clock" class="clock"></span>
+      <span id="save-indicator" class="save-indicator">saved</span>
+      <button id="theme-toggle" class="ghost-btn" title="Toggle dark mode">🌙</button>
+      <button id="review-btn" class="ghost-btn" title="Weekly review">Review</button>
+      <button id="versions-btn" class="ghost-btn" title="Data, backups and history">Data</button>
+    </div>
+  </header>
+
+  <main id="panels">
+    <section class="panel active" id="panel-today"></section>
+    <section class="panel" id="panel-calendar"></section>
+    <section class="panel" id="panel-schedule"></section>
+    <section class="panel" id="panel-tasks"></section>
+    <section class="panel" id="panel-masters"></section>
+    <section class="panel" id="panel-settings"></section>
+  </main>
+
+  <div id="modal-overlay" class="modal-overlay hidden">
+    <div class="modal" id="modal-content"></div>
+  </div>
+
+</div>
+<script src="js/store.js"></script>
+<script src="js/inbox.js"></script>
+<script src="js/app.js"></script>
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+  }
+</script>
+</body>
+</html>
